@@ -19,6 +19,19 @@ public class SnakeGame extends View {
     private final int Y = 15;
     private Bitmap apple;
     private Bitmap snakeheadright;
+    private Bitmap snakebodyv;
+    private Bitmap snakebodyh;
+    private Bitmap snaketailright;
+    private Bitmap snaketailleft;
+    private Bitmap snaketaildown;
+    private Bitmap snaketailup;
+    private Bitmap snakeheadleft;
+    private Bitmap snakeheadup;
+    private Bitmap snakeheaddown;
+    private Bitmap snaketurn4;
+    private Bitmap snaketurn5;
+    private Bitmap snaketurn6;
+    private Bitmap snaketurn7;
 
     public SnakeGame(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -28,7 +41,22 @@ public class SnakeGame extends View {
         myRedPaint.setColor(Color.RED);
         map = new Map (X,Y);
         apple = BitmapFactory.decodeResource(getResources(),R.drawable.apple);
-        snakeheadright =BitmapFactory.decodeResource(getResources(),R.drawable.snakeheadright);
+        snakeheadright = BitmapFactory.decodeResource(getResources(),R.drawable.snakeheadright);
+        snakebodyv = BitmapFactory.decodeResource(getResources(),R.drawable.snakebodyv);
+        snakebodyh = BitmapFactory.decodeResource(getResources(), R.drawable.snakebodyh);
+        snaketailright = BitmapFactory.decodeResource(getResources(), R.drawable.snaketailright);
+        snaketailleft = BitmapFactory.decodeResource(getResources(), R.drawable.snaketailleft);
+        snaketaildown = BitmapFactory.decodeResource(getResources(), R.drawable.snaketaildown);
+        snaketailup = BitmapFactory.decodeResource(getResources(), R.drawable.snaketailup);
+        snakeheadleft = BitmapFactory.decodeResource(getResources(), R.drawable.snakeheadleft);
+        snakeheadup = BitmapFactory.decodeResource(getResources(), R.drawable.snakeheadup);
+        snakeheaddown = BitmapFactory.decodeResource(getResources(), R.drawable.snakeheaddown);
+        snaketurn4 = BitmapFactory.decodeResource(getResources(), R.drawable.snaketurn4);
+        snaketurn5 = BitmapFactory.decodeResource(getResources(), R.drawable.snaketurn5);
+        snaketurn6 = BitmapFactory.decodeResource(getResources(), R.drawable.snaketurn6);
+        snaketurn7 = BitmapFactory.decodeResource(getResources(), R.drawable.snaketurn7);
+
+
     }
 
     @Override
@@ -70,12 +98,51 @@ public class SnakeGame extends View {
                 if (tempCell == 'x') {
                     // canvas.drawRect(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH, myRedPaint);
                     // canvas.drawBitmap(apple,j * rowW + deltaW, i * rowH + deltaH,myPaint);
-                    canvas.drawBitmap(apple,null,new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH),myPaint);
+                    canvas.drawBitmap(apple, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
                 }
                 if (tempCell == 'B') {
-                    canvas.drawBitmap(snakeheadright, null, new RectF(j*rowW + deltaW, i*rowH + deltaH, j*rowW + rowW + deltaW, i*rowH + rowH + deltaH), myPaint );
-
+                    canvas.drawBitmap(snakeheadright, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
                 }
+                if (tempCell == 'I') {
+                    canvas.drawBitmap(snakebodyv, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == '-') {
+                    canvas.drawBitmap(snakebodyh, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == '<') {
+                    canvas.drawBitmap(snaketailright, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == '>') {
+                    canvas.drawBitmap(snaketailleft, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == 'V') {
+                    canvas.drawBitmap(snaketaildown, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == 'v') {
+                    canvas.drawBitmap(snaketailup, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == 'b') {
+                    canvas.drawBitmap(snakeheadleft, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == 'Y') {
+                    canvas.drawBitmap(snakeheadup, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == 'y') {
+                    canvas.drawBitmap(snakeheaddown, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == '4') {
+                    canvas.drawBitmap(snaketurn4, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == '5') {
+                    canvas.drawBitmap(snaketurn5, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == '6') {
+                    canvas.drawBitmap(snaketurn6, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+                if (tempCell == '7') {
+                    canvas.drawBitmap(snaketurn7, null, new RectF(j * rowW + deltaW, i * rowH + deltaH, j * rowW + rowW + deltaW, i * rowH + rowH + deltaH), myPaint);
+                }
+
             }
         }
     }
