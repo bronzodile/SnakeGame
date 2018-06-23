@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -32,6 +33,10 @@ public class SnakeGame extends View {
     private Bitmap snaketurn5;
     private Bitmap snaketurn6;
     private Bitmap snaketurn7;
+    private TapListener tapListener;
+    private TimerProcessor timerProcessor;
+    private Handler handler;
+    private boolean status;
 
     public SnakeGame(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -56,7 +61,23 @@ public class SnakeGame extends View {
         snaketurn6 = BitmapFactory.decodeResource(getResources(), R.drawable.snaketurn6);
         snaketurn7 = BitmapFactory.decodeResource(getResources(), R.drawable.snaketurn7);
 
+        tapListener = new TapListener(map , this);
+        this.setOnTouchListener(tapListener);
+        handler = new Handler();
+        timerProcessor = new TimerProcessor(map, this, handler);
 
+
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+
+        if (status) {
+            handler.postDelayed(timerProcessor, 800); }
     }
 
     @Override

@@ -23,4 +23,16 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        snakeGame.setStatus(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        snakeGame.setStatus(false);
+    }
 }
